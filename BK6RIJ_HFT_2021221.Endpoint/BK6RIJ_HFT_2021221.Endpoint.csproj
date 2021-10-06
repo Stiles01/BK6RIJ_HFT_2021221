@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BK6RIJ_HFT_2021221.Data\BK6RIJ_HFT_2021221.Data.csproj" />
+    <ProjectReference Include="..\BK6RIJ_HFT_2021221.Logic\BK6RIJ_HFT_2021221.Logic.csproj" />
+    <ProjectReference Include="..\BK6RIJ_HFT_2021221.Models\BK6RIJ_HFT_2021221.Models.csproj" />
+    <ProjectReference Include="..\BK6RIJ_HFT_2021221.Repository\BK6RIJ_HFT_2021221.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
