@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BK6RIJ_HFT_2021221.Repository
 {
-    interface IOrderRepository
+    public interface IOrderRepository
     {
         void Create(Order order);
         void Delete(int id);

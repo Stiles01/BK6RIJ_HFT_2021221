@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BK6RIJ_HFT_2021221.Repository
 {
-    interface IDeliveryRepository
+    public interface IDeliveryRepository
     {
         void Create(Delivery delivery);
         void Delete(int id);

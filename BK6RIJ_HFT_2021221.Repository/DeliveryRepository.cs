@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BK6RIJ_HFT_2021221.Repository
 {
-    class DeliveryRepository : IDeliveryRepository
+    public class DeliveryRepository : IDeliveryRepository
     {
         XYZDbContext db;
 

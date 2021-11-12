@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BK6RIJ_HFT_2021221.Repository
 {
-    class CustomerRepository : ICustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
         XYZDbContext db;
 

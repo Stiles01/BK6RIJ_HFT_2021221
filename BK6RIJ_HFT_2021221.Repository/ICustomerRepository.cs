@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BK6RIJ_HFT_2021221.Repository
 {
-    interface ICustomerRepository
+    public interface ICustomerRepository
     {
         void Create(Customer customer);
         void Delete(int id);
