@@ -9,5 +9,10 @@ namespace BK6RIJ_HFT_2021221.Logic
 {
     public interface ICustomerLogic
     {
+        void Create(Customer customer);
+        void Delete(int id);
+        Customer Read(int id);
+        IQueryable<Customer> ReadAll();
+        void Update(Customer customer);
     }
 }

@@ -9,6 +9,10 @@ namespace BK6RIJ_HFT_2021221.Logic
 {
     public interface IProductLogic
     {
-
+        void Create(Product product);
+        void Delete(int id);
+        Product Read(int id);
+        IQueryable<Product> ReadAll();
+        void Update(Product product);
     }
 }

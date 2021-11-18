@@ -9,5 +9,10 @@ namespace BK6RIJ_HFT_2021221.Logic
 {
     public interface IDeliveryLogic
     {
+        void Create(Delivery delivery);
+        void Delete(int id);
+        Delivery Read(int id);
+        IQueryable<Delivery> ReadAll();
+        void Update(Delivery delivery);
     }
 }
