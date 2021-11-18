@@ -22,7 +22,7 @@ namespace BK6RIJ_HFT_2021221.Logic
         {
             if (customer.FirstName == "" || customer.LastName == "")
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("Customer name must be filled!");
             }
             customerRepo.Create(customer);
         }
@@ -37,7 +37,7 @@ namespace BK6RIJ_HFT_2021221.Logic
             return customerRepo.Read(id);
         }
 
-        public IQueryable<Customer> ReadAll()
+        public IEnumerable<Customer> ReadAll()
         {
             return customerRepo.ReadAll();
         }

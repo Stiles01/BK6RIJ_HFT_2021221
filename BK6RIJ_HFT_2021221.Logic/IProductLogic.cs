@@ -12,7 +12,7 @@ namespace BK6RIJ_HFT_2021221.Logic
         void Create(Product product);
         void Delete(int id);
         Product Read(int id);
-        IQueryable<Product> ReadAll();
+        IEnumerable<Product> ReadAll();
         void Update(Product product);
     }
 }

@@ -23,7 +23,7 @@ namespace BK6RIJ_HFT_2021221.Logic
             Type t = order.OrderDate.GetType();
             if (t.Equals(typeof(DateTime)))
             {
-                throw new ArgumentException();
+                throw new ArgumentException("Order date is not a date type!");
             }
         }
 
@@ -37,7 +37,7 @@ namespace BK6RIJ_HFT_2021221.Logic
             return orderRepo.Read(id);
         }
 
-        public IQueryable<Order> ReadAll()
+        public IEnumerable<Order> ReadAll()
         {
             return orderRepo.ReadAll();
         }

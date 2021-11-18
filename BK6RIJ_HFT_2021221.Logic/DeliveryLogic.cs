@@ -22,11 +22,11 @@ namespace BK6RIJ_HFT_2021221.Logic
         {
             if (delivery.Company == "")
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("Empty name is not allowed!");
             }
             else if (delivery.DeliveryDays <= 0)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("Delivery days cannot be negative!");
             }
             deliveryRepo.Create(delivery);
         }
@@ -41,7 +41,7 @@ namespace BK6RIJ_HFT_2021221.Logic
             return deliveryRepo.Read(id);
         }
 
-        public IQueryable<Delivery> ReadAll()
+        public IEnumerable<Delivery> ReadAll()
         {
             return deliveryRepo.ReadAll();
         }

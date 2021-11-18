@@ -21,11 +21,11 @@ namespace BK6RIJ_HFT_2021221.Logic
         {
             if (product.Name == "")
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("Name cannot be empty!");
             }
             else if (product.Price <= 0)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("Price must be a positive number!");
             }
             productRepo.Create(product);
         }
@@ -40,7 +40,7 @@ namespace BK6RIJ_HFT_2021221.Logic
             return productRepo.Read(id);
         }
 
-        public IQueryable<Product> ReadAll()
+        public IEnumerable<Product> ReadAll()
         {
             return productRepo.ReadAll();
         }
