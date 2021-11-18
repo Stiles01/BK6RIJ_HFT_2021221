@@ -50,7 +50,6 @@ namespace BK6RIJ_HFT_2021221.Logic
             productRepo.Update(product);
         }
 
-        //non-CRUD
 
 
 
