@@ -20,11 +20,7 @@ namespace BK6RIJ_HFT_2021221.Logic
 
         public void Create(Order order)
         {
-            Type t = order.OrderDate.GetType();
-            if (t.Equals(typeof(DateTime)))
-            {
-                throw new ArgumentException("Order date is not a date type!");
-            }
+            orderRepo.Create(order);
         }
 
         public void Delete(int id)
@@ -59,18 +55,19 @@ namespace BK6RIJ_HFT_2021221.Logic
                    (grouped.Key, grouped.Average(x => x.Delivery.DeliveryDays));
         }
 
-        public IEnumerable<KeyValuePair<string, int>> CountOfProductsByCustomers()
+        public IEnumerable<KeyValuePair<int, int>> CountOfProductsByCustomers()
         {
             return from x in orderRepo.ReadAll()
                    group x by x.Customer.Id into grouped
-                   select new KeyValuePair<string, int>
-                   ($"{orderRepo.Read(grouped.Key).Customer.FirstName} {orderRepo.Read(grouped.Key).Customer.LastName}", grouped.Select(x => x.Product.Name).Count());
+                   select new KeyValuePair<int, int>
+                   (grouped.Key, grouped.Select(x => x.Product.Name).Count());
         }
 
-        public IEnumerable<KeyValuePair<DateTime, string>> OrdersByASpecificCustomer(int id)
+        public IEnumerable<KeyValuePair<DateTime, string>> OrdersFromASpecificCustomer(int id)
         {
             return from x in orderRepo.ReadAll()
                    where x.Customer.Id == id
+                   orderby x.OrderDate
                    select new KeyValuePair<DateTime, string>
                    (
                        x.OrderDate,
@@ -87,16 +84,17 @@ namespace BK6RIJ_HFT_2021221.Logic
                    (grouped.Key, grouped.Select(x => x.OrderDate).Count());
         }
 
-        public IEnumerable<KeyValuePair<int, string>> OrderInformationsAfterADate(DateTime date)
+        public IEnumerable<KeyValuePair<int, string>> OrderInformationsAfterADate(string date)
         {
+            DateTime orderDate = DateTime.Parse(date);
             return from x in orderRepo.ReadAll()
-                   where x.OrderDate > date
+                   where x.OrderDate > orderDate
                    orderby x.OrderDate
                    select new KeyValuePair<int, string>
                    (
                        x.OrderId,
-                       $"{x.OrderDate} - {x.Customer.FirstName} {x.Customer.LastName}: {x.Product.Name} {x.Product.Price}/piece " +
-                       $"(Delivery: {x.Delivery.Company}-{x.Delivery.DeliveryDays})"
+                       $"{x.OrderDate.ToShortDateString()} - {x.Customer.FirstName} {x.Customer.LastName}: {x.Product.Name} {x.Product.Price}/piece ".ToString() +
+                       $"(Delivery: {x.Delivery.Company}-{x.Delivery.DeliveryDays})".ToString()
                    );
         }
     }
