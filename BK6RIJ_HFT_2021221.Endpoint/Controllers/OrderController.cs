@@ -22,28 +22,28 @@ namespace BK6RIJ_HFT_2021221.Endpoint.Controllers
 
         // GET: /order
         [HttpGet]
-        public IEnumerable<Delivery> Get()
+        public IEnumerable<Order> Get()
         {
             return ol.ReadAll();
         }
 
         // GET /order/5
         [HttpGet("{id}")]
-        public Delivery Get(int id)
+        public Order Get(int id)
         {
             return ol.Read(id);
         }
 
         // POST /order
         [HttpPost]
-        public void Post([FromBody] Delivery value)
+        public void Post([FromBody] Order value)
         {
             ol.Create(value);
         }
 
         // PUT /order
         [HttpPut]
-        public void Put([FromBody] Delivery value)
+        public void Put([FromBody] Order value)
         {
             ol.Update(value);
         }
