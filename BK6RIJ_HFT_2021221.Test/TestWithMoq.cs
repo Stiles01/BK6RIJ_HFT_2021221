@@ -49,11 +49,11 @@ namespace BK6RIJ_HFT_2021221.Test
             };
             
 
-            mockOrderRepository.Setup((t) => t.Create(It.IsAny<Order>()));
+            mockOrderRepository.Setup((t) => t.Create(It.IsAny<Delivery>()));
             mockOrderRepository.Setup((t) => t.ReadAll()).Returns(
-               new List<Order>()
+               new List<Delivery>()
                {
-                    new Order()
+                    new Delivery()
                     {
                         OrderId = 1,
                         OrderDate = new DateTime(2021,10,03),
@@ -61,7 +61,7 @@ namespace BK6RIJ_HFT_2021221.Test
                         Product = fakeProduct1,
                         Delivery = fakeDelivery1
                     },
-                    new Order()
+                    new Delivery()
                     {
                         OrderId = 2,
                         OrderDate = new DateTime(2021,10,04),
@@ -69,7 +69,7 @@ namespace BK6RIJ_HFT_2021221.Test
                         Product = fakeProduct1,
                         Delivery = fakeDelivery1
                     },
-                    new Order()
+                    new Delivery()
                     {
                         OrderId = 3,
                         OrderDate = new DateTime(2020,10,03),

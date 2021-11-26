@@ -14,5 +14,17 @@ namespace BK6RIJ_HFT_2021221.Logic
         Order Read(int id);
         IEnumerable<Order> ReadAll();
         void Update(Order order);
+
+        //non-CRUD
+
+        IEnumerable<KeyValuePair<string, double>> AVGDeliveryDaysByProducts();
+
+        IEnumerable<KeyValuePair<int, int>> CountOfProductsByCustomers();
+
+        IEnumerable<KeyValuePair<DateTime, string>> OrdersFromASpecificCustomer(int id);
+
+        IEnumerable<KeyValuePair<string, int>> CountOfOrdersByCompanies();
+
+        IEnumerable<KeyValuePair<int, string>> OrderInformationsAfterADate(string date);
     }
 }

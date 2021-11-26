@@ -1,4 +1,5 @@
 ﻿using System;
+using BK6RIJ_HFT_2021221.Models;
 
 namespace BK6RIJ_HFT_2021221.Client
 {
@@ -6,7 +7,15 @@ namespace BK6RIJ_HFT_2021221.Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            RestServices restService = new RestServices("http://localhost:51716");
+
+            //restService.Post<Brand>(new Brand()
+            //{
+            //    Name = "Peugeot"
+            //}, "brand");
+
+            //var brands = restService.Get<Brand>("brand");
+            //var cars = restService.Get<Car>("car");
         }
     }
 }

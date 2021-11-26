@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace BK6RIJ_HFT_2021221.Models
@@ -17,12 +18,15 @@ namespace BK6RIJ_HFT_2021221.Models
         public DateTime OrderDate { get; set; }
 
         [NotMapped]
+        [JsonIgnore]
         public virtual Customer Customer { get; set; }
 
         [NotMapped]
+        [JsonIgnore]
         public virtual Product Product { get; set; }
 
         [NotMapped]
+        [JsonIgnore]
         public virtual Delivery Delivery { get; set; }
 
         [ForeignKey(nameof(Customer))]
