@@ -17,7 +17,7 @@ namespace BK6RIJ_HFT_2021221.Logic
 
         //non-CRUD
 
-        IEnumerable<KeyValuePair<string, double>> AVGDeliveryDaysByProducts();
+        IEnumerable<KeyValuePair<string, int>> CountOfOrdersByProducts();
 
         IEnumerable<KeyValuePair<int, int>> CountOfProductsByCustomers();
 

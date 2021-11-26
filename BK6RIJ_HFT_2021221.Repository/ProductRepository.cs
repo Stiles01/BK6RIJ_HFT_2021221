@@ -10,8 +10,8 @@ namespace BK6RIJ_HFT_2021221.Repository
 {
     public class ProductRepository : IProductRepository
     {
-        XYZDbContext db;
-        public ProductRepository(XYZDbContext XYZDb)
+        BK6RIJ_HFT_2021221_DbContext db;
+        public ProductRepository(BK6RIJ_HFT_2021221_DbContext XYZDb)
         {
             db = XYZDb;
         }

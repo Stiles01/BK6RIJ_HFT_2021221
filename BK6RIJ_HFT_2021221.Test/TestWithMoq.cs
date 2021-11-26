@@ -49,11 +49,11 @@ namespace BK6RIJ_HFT_2021221.Test
             };
             
 
-            mockOrderRepository.Setup((t) => t.Create(It.IsAny<Delivery>()));
+            mockOrderRepository.Setup((t) => t.Create(It.IsAny<Order>()));
             mockOrderRepository.Setup((t) => t.ReadAll()).Returns(
-               new List<Delivery>()
+               new List<Order>()
                {
-                    new Delivery()
+                    new Order()
                     {
                         OrderId = 1,
                         OrderDate = new DateTime(2021,10,03),
@@ -61,7 +61,7 @@ namespace BK6RIJ_HFT_2021221.Test
                         Product = fakeProduct1,
                         Delivery = fakeDelivery1
                     },
-                    new Delivery()
+                    new Order()
                     {
                         OrderId = 2,
                         OrderDate = new DateTime(2021,10,04),
@@ -69,7 +69,7 @@ namespace BK6RIJ_HFT_2021221.Test
                         Product = fakeProduct1,
                         Delivery = fakeDelivery1
                     },
-                    new Delivery()
+                    new Order()
                     {
                         OrderId = 3,
                         OrderDate = new DateTime(2020,10,03),
@@ -89,13 +89,13 @@ namespace BK6RIJ_HFT_2021221.Test
         }
 
         [Test]
-        public void AVGDeliveryDaysByProductsTest()
+        public void CountOfOrdersByProductsTest()
         {
             //act
-            var result = ol.AVGDeliveryDaysByProducts().ToArray();
+            var result = ol.CountOfOrdersByProducts().ToArray();
 
             //assert
-            Assert.That(result[0], Is.EqualTo(new KeyValuePair<string, double> ( "Bread", 6.0 )));
+            Assert.That(result[0], Is.EqualTo(new KeyValuePair<string, int> ( "Bread", 3 )));
         }
 
         [Test]

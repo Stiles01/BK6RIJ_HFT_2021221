@@ -47,12 +47,16 @@ namespace BK6RIJ_HFT_2021221.Logic
         //non-CRUD
 
 
-        public IEnumerable<KeyValuePair<string, double>> AVGDeliveryDaysByProducts()
+        public IEnumerable<KeyValuePair<string, int>> CountOfOrdersByProducts()
         {
             return from x in orderRepo.ReadAll()
                    group x by x.Product.Name into grouped
-                   select new KeyValuePair<string, double>
-                   (grouped.Key, grouped.Average(x => x.Delivery.DeliveryDays));
+                   select new KeyValuePair<string, int>
+                   (grouped.Key, grouped.Count());
+            //return from x in orderRepo.ReadAll()
+            //       group x by x.Product.Id into grouped
+            //       select new KeyValuePair<int, double>
+            //       (grouped.Key, grouped.Select(x => x.Delivery.DeliveryDays).Average());
         }
 
         public IEnumerable<KeyValuePair<int, int>> CountOfProductsByCustomers()

@@ -10,8 +10,8 @@ namespace BK6RIJ_HFT_2021221.Repository
 {
     public class OrderRepository : IOrderRepository
     {
-        XYZDbContext db;
-        public OrderRepository(XYZDbContext XYZDb)
+        BK6RIJ_HFT_2021221_DbContext db;
+        public OrderRepository(BK6RIJ_HFT_2021221_DbContext XYZDb)
         {
             db = XYZDb;
         }

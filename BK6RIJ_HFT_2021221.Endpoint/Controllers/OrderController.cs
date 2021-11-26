@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using BK6RIJ_HFT_2021221.Models;
+using BK6RIJ_HFT_2021221.Logic;
 using System;
 using System.Collections.Generic;
-using BK6RIJ_HFT_2021221.Logic;
-using BK6RIJ_HFT_2021221.Models;
 using System.Linq;
 using System.Threading.Tasks;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BK6RIJ_HFT_2021221.Endpoint.Controllers
 {
@@ -14,7 +15,7 @@ namespace BK6RIJ_HFT_2021221.Endpoint.Controllers
     public class OrderController : ControllerBase
     {
         IOrderLogic ol;
-        
+
         public OrderController(IOrderLogic ol)
         {
             this.ol = ol;

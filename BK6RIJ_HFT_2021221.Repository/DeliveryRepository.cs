@@ -10,9 +10,9 @@ namespace BK6RIJ_HFT_2021221.Repository
 {
     public class DeliveryRepository : IDeliveryRepository
     {
-        XYZDbContext db;
+        BK6RIJ_HFT_2021221_DbContext db;
 
-        public DeliveryRepository(XYZDbContext XYZDb)
+        public DeliveryRepository(BK6RIJ_HFT_2021221_DbContext XYZDb)
         {
             db = XYZDb;
         }

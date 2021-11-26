@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Mvc;
 using BK6RIJ_HFT_2021221.Logic;
-using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BK6RIJ_HFT_2021221.Endpoint.Controllers
 {
@@ -21,11 +22,11 @@ namespace BK6RIJ_HFT_2021221.Endpoint.Controllers
             this.ol = ol;
         }
 
-        // statistic/avgdeliverydaysbyproducts
+        // statistic/countofordersbyproducts
         [HttpGet]
-        public IEnumerable<KeyValuePair<string, double>> AVGDeliveryDaysByProducts()
+        public IEnumerable<KeyValuePair<string, int>> CountOfOrdersByProducts()
         {
-            return ol.AVGDeliveryDaysByProducts();
+            return ol.CountOfOrdersByProducts();
         }
 
         // statistic/countofproductsbycustomers
@@ -56,4 +57,5 @@ namespace BK6RIJ_HFT_2021221.Endpoint.Controllers
             return ol.OrderInformationsAfterADate(date);
         }
     }
+
 }

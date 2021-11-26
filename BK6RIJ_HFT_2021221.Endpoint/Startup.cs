@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace BK6RIJ_HFT_2021221.Endpoint
 {
@@ -19,9 +20,10 @@ namespace BK6RIJ_HFT_2021221.Endpoint
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //System.Threading.Thread.Sleep(8000);
+
             services.AddControllers();
 
-            services.AddTransient<XYZDbContext,XYZDbContext>();
             services.AddTransient<IOrderLogic,OrderLogic>();
             services.AddTransient<IOrderRepository,OrderRepository>();
             services.AddTransient<ICustomerLogic, CustomerLogic>();
@@ -30,6 +32,7 @@ namespace BK6RIJ_HFT_2021221.Endpoint
             services.AddTransient<IDeliveryRepository, DeliveryRepository>();
             services.AddTransient<IProductLogic, ProductLogic>();
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<BK6RIJ_HFT_2021221_DbContext, BK6RIJ_HFT_2021221_DbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
