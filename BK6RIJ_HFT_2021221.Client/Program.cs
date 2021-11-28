@@ -88,10 +88,7 @@ namespace BK6RIJ_HFT_2021221.Client
             var orderinformationsafteradate = restService.Get<KeyValuePair<int, string>>("statistic/orderinformationsafteradate/2021.07.01");
 
             ;
-            //restService.Post<Brand>(new Brand()
-            //{
-            //    Name = "Peugeot"
-            //}, "brand");
+           
 
            
         }
