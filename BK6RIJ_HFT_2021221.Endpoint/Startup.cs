@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 namespace BK6RIJ_HFT_2021221.Endpoint
 {
@@ -21,6 +22,11 @@ namespace BK6RIJ_HFT_2021221.Endpoint
         public void ConfigureServices(IServiceCollection services)
         {
             //System.Threading.Thread.Sleep(8000);
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BK6RIJ_HFT_2021221.Endpoint", Version = "v1" });
+            });
 
             services.AddControllers();
 
@@ -38,11 +44,14 @@ namespace BK6RIJ_HFT_2021221.Endpoint
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/ swagger / v1 / swagger.json", "BK6RIJ_HFT_2021221.Endpoint v1"));
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

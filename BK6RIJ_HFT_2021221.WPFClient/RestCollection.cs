@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace MovieDbApp.RestClient
+namespace BK6RIJ_HFT_2021221.WPFClient
 {
     public class RestService
     {
@@ -407,7 +407,7 @@ namespace MovieDbApp.RestClient
                     });
                 });
             }
-            
+
         }
 
 
