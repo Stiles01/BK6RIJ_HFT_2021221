@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.Configuration;
+using BK6RIJ_HFT_2021221.Endpoint.Services;
 
 namespace BK6RIJ_HFT_2021221.Endpoint
 {
@@ -65,7 +66,7 @@ namespace BK6RIJ_HFT_2021221.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                //endpoints.MapHub<SinalRHub>
+                endpoints.MapHub<SinalRHub>("/hub");
             });
         }
     }

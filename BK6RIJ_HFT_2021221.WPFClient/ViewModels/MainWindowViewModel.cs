@@ -65,7 +65,7 @@ namespace BK6RIJ_HFT_2021221.WPFClient.ViewModels
 
             if (!IsInDesignMode)
             {
-                Customers = new RestCollection<Customer>("http://localhost:9973/", "customer");
+                Customers = new RestCollection<Customer>("http://localhost:9973/", "customer", "hub");
                 CreateCustomerCommand = new RelayCommand(() =>
                 {
                     Customers.Add(new Customer()

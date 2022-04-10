@@ -5,6 +5,8 @@ using BK6RIJ_HFT_2021221.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR;
+using BK6RIJ_HFT_2021221.Endpoint.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,10 +17,12 @@ namespace BK6RIJ_HFT_2021221.Endpoint.Controllers
     public class CustomerController : ControllerBase
     {
         ICustomerLogic cl;
+        private readonly IHubContext<SinalRHub> hub;
 
-        public CustomerController(ICustomerLogic cl)
+        public CustomerController(ICustomerLogic cl, IHubContext<SinalRHub> hub)
         {
             this.cl = cl;
+            this.hub = hub;
         }
 
         // GET: /customer
@@ -40,6 +44,7 @@ namespace BK6RIJ_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Customer value)
         {
             cl.Create(value);
+            hub.Clients.All.SendAsync("CustomerCreated", value);
         }
 
         // PUT /customer
@@ -47,13 +52,16 @@ namespace BK6RIJ_HFT_2021221.Endpoint.Controllers
         public void Put([FromBody] Customer value)
         {
             cl.Update(value);
+            hub.Clients.All.SendAsync("CustomerUpdated", value);
         }
 
         // DELETE customer/3
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var one = cl.Read(id);
             cl.Delete(id);
+            hub.Clients.All.SendAsync("CustomerDeleted", one);
         }
     }
 }
