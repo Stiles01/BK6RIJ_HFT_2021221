@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR;
+using BK6RIJ_HFT_2021221.Endpoint.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,10 +17,12 @@ namespace BK6RIJ_HFT_2021221.Endpoint.Controllers
     public class OrderController : ControllerBase
     {
         IOrderLogic ol;
+        private readonly IHubContext<SinalRHub> hub;
 
-        public OrderController(IOrderLogic ol)
+        public OrderController(IOrderLogic ol, IHubContext<SinalRHub> hub)
         {
             this.ol = ol;
+            this.hub = hub;
         }
 
         // GET: /order
@@ -40,6 +44,7 @@ namespace BK6RIJ_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Order value)
         {
             ol.Create(value);
+            hub.Clients.All.SendAsync("OrderCreated", value);
         }
 
         // PUT /order
@@ -47,13 +52,16 @@ namespace BK6RIJ_HFT_2021221.Endpoint.Controllers
         public void Put([FromBody] Order value)
         {
             ol.Update(value);
+            hub.Clients.All.SendAsync("OrderUpdated", value);
         }
 
         // DELETE order/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var one = ol.Read(id);
             ol.Delete(id);
+            hub.Clients.All.SendAsync("OrderDeleted", one);
         }
     }
 }

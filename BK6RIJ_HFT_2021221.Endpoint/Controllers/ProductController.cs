@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR;
+using BK6RIJ_HFT_2021221.Endpoint.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,10 +17,12 @@ namespace BK6RIJ_HFT_2021221.Endpoint.Controllers
     public class ProductController : ControllerBase
     {
         IProductLogic pl;
+        private readonly IHubContext<SinalRHub> hub;
 
-        public ProductController(IProductLogic pl)
+        public ProductController(IProductLogic pl, IHubContext<SinalRHub> hub)
         {
             this.pl = pl;
+            this.hub = hub;
         }
 
         // GET: /product
@@ -40,6 +44,7 @@ namespace BK6RIJ_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Product value)
         {
             pl.Create(value);
+            hub.Clients.All.SendAsync("ProductCreated", value);
         }
 
         // PUT /product
@@ -47,13 +52,16 @@ namespace BK6RIJ_HFT_2021221.Endpoint.Controllers
         public void Put([FromBody] Product value)
         {
             pl.Update(value);
+            hub.Clients.All.SendAsync("ProductUpdated", value);
         }
 
         // DELETE product/3
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var one = pl.Read(id);
             pl.Delete(id);
+            hub.Clients.All.SendAsync("ProductDeleted", one);
         }
     }
 }
