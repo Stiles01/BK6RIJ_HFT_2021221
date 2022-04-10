@@ -24,5 +24,25 @@ namespace BK6RIJ_HFT_2021221.WPFClient
         {
             InitializeComponent();
         }
+
+        private void Customers_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerWindow window = new CustomerWindow();
+            window.Show();
+        }
+
+        private void Products_Click(object sender, RoutedEventArgs e)
+        {
+            ProductWindow window = new ProductWindow();
+            window.Show();
+        }
+
+       
+
+        private void Deliveries_Click(object sender, RoutedEventArgs e)
+        {
+            DeliveryWindow window = new DeliveryWindow();
+            window.Show();
+        }
     }
 }

@@ -1,0 +1,42 @@
+﻿<Window x:Class="BK6RIJ_HFT_2021221.WPFClient.DeliveryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BK6RIJ_HFT_2021221.WPFClient"
+        xmlns:vms="clr-namespace:BK6RIJ_HFT_2021221.WPFClient.ViewModels"
+        mc:Ignorable="d"
+        Title="Delivery Editor" Height="450" Width="800">
+    <Window.DataContext>
+        <vms:DeliveryWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding Deliveries}" SelectedItem="{Binding SelectedDeliveries}" Grid.Column="0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} ({1} days)">
+                                <Binding Path="Company" />
+                                <Binding Path="DeliveryDays"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="1" >
+            <Label Content="Company" Background="LightBlue" Padding="10"/>
+            <TextBox Text="{Binding SelectedDeliveries.Company}" Padding="10" />
+            <Label Content="Delivery Days" Background="LightBlue" Padding="10"/>
+            <TextBox Text="{Binding SelectedDeliveries.DeliveryDays}" Padding="10" Margin="0,0,0,30"/>
+            <Button Content="Edit Delivery" Command="{Binding UpdateDeliveryCommand}" Margin="10" Padding="10"/>
+            <Button Content="Create Delivery" Command="{Binding CreateDeliveryCommand}" Margin="10" Padding="10"/>
+            <Button Content="Delete Delivery" Command="{Binding DeleteDeliveryCommand}" Margin="10" Padding="10"/>
+        </StackPanel>
+    </Grid>
+</Window>

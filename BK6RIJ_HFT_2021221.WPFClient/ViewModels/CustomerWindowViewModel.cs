@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace BK6RIJ_HFT_2021221.WPFClient.ViewModels
 {
-    public class MainWindowViewModel : ObservableRecipient
+    public class CustomerWindowViewModel : ObservableRecipient
     {
         private string errorMessage;
 
@@ -60,7 +60,7 @@ namespace BK6RIJ_HFT_2021221.WPFClient.ViewModels
             }
         }
 
-        public MainWindowViewModel()
+        public CustomerWindowViewModel()
         {
 
             if (!IsInDesignMode)
