@@ -27,6 +27,7 @@ namespace BK6RIJ_HFT_2021221.Repository
         public void Delete(int id)
         {
             db.Remove(Read(id));
+            db.SaveChanges();
         }
 
         public Customer Read(int id)

@@ -18,17 +18,24 @@
         <ListBox ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer}" Grid.Column="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <WrapPanel>
-                        <Label Content="{Binding FirstName}"/>
-                        <Label Content="{Binding LastName}"/>
-                    </WrapPanel>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="FirstName" />
+                                <Binding Path="LastName"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Column="1">
+        <StackPanel Grid.Column="1" >
+            <Label Content="Name" Background="LightBlue" Padding="10"/>
+            <TextBox Text="{Binding SelectedCustomer.FirstName}" Padding="10" />
+            <TextBox Text="{Binding SelectedCustomer.LastName}" Padding="10" Margin="0,0,0,30"/>
+            <Button Content="Edit Customer" Command="{Binding UpdateCustomerCommand}" Margin="10" Padding="10"/>
             <Button Content="Create Customer" Command="{Binding CreateCustomerCommand}" Margin="10" Padding="10"/>
             <Button Content="Delete Customer" Command="{Binding DeleteCustomerCommand}" Margin="10" Padding="10"/>
-            <Button Content="Edit Customer" Command="{Binding UpdateCustomerCommand}" Margin="10" Padding="10"/>
         </StackPanel>
     </Grid>
 </Window>
