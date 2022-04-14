@@ -60,8 +60,16 @@ namespace BK6RIJ_HFT_2021221.Endpoint
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BK6RIJ_HFT_2021221.Endpoint v1"));
             }
 
-            
+            app.UseCors(x => x
+            .AllowCredentials()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .WithOrigins("http://localhost:12369"));
+
             app.UseRouting();
+
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

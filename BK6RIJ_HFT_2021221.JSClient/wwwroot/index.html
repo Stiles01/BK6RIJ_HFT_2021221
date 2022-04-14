@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Customer UI</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <H1>Customer Catalog</H1>
+
+    <div id="formdiv">
+        <label>Last name</label>
+        <input type="text" id="lastname" />
+        <label>First name</label>
+        <input type="text" id="firstname" />
+        <button type="button" onclick="create()">Add Customer</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Last name</th>
+                <th>First name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

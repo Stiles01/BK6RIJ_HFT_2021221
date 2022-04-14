@@ -64,10 +64,10 @@ namespace BK6RIJ_HFT_2021221.Data
             Product p4 = new Product { Id = 4, Name = "Flower", Price = 3000 };
             Product p5 = new Product { Id = 5, Name = "Cake", Price = 5632 };
             Product p6 = new Product { Id = 6, Name = "Shoes", Price = 20000 };
-            Customer c1 = new Customer { Id = 1, FirstName = "Kovacs", LastName = "Bela" };
-            Customer c2 = new Customer { Id = 2, FirstName = "Kovacs", LastName = "Erzsebet" };
-            Customer c3 = new Customer { Id = 3, FirstName = "Nagy", LastName = "Pistike" };
-            Customer c4 = new Customer { Id = 4, FirstName = "Varga", LastName = "Virag" };
+            Customer c1 = new Customer { Id = 1, FirstName = "Bela", LastName = "Kovacs" };
+            Customer c2 = new Customer { Id = 2, FirstName = "Erzsebet", LastName = "Kovacs" };
+            Customer c3 = new Customer { Id = 3, FirstName = "Pistike", LastName = "Nagy" };
+            Customer c4 = new Customer { Id = 4, FirstName = "Virag", LastName = "Varga" };
 
             List<Order> orders = new List<Order>()
             {
