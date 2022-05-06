@@ -36,7 +36,7 @@ namespace BK6RIJ_HFT_2021221.Data
                 .HasOne(order => order.Customer)
                 .WithMany(customer => customer.Orders)
                 .HasForeignKey(order => order.CustomerId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
             });
             modelBuilder.Entity<Order>(entity =>
             {
@@ -44,7 +44,7 @@ namespace BK6RIJ_HFT_2021221.Data
                 .HasOne(order => order.Product)
                 .WithMany(product => product.Orders)
                 .HasForeignKey(order => order.ProductId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
             });
             modelBuilder.Entity<Order>(entity =>
             {
@@ -52,7 +52,7 @@ namespace BK6RIJ_HFT_2021221.Data
                 .HasOne(order => order.Delivery)
                 .WithMany(delivery => delivery.Orders)
                 .HasForeignKey(order => order.DeliveryId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
             });
             Delivery fox = new Delivery { Id = 1, Company = "FoxPost", DeliveryDays = 6 };
             Delivery gls = new Delivery { Id = 2, Company = "GLS", DeliveryDays = 3 };

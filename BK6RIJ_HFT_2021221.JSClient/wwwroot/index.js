@@ -52,7 +52,7 @@ function display() {
     products.forEach(t => {
         table.innerHTML +=
             "<tr><td>" + t.id + "</td><td>" + t.name + "</td><td>" +
-            t.price + "</td><td>" + `<button type="button" onclick="remove(${t.id})">Delete</button>` + "</td></tr>";
+            t.price + "</td><td>" + `<button type="button" onclick="remove(${t.id})">Delete</button><button type="button" onclick="showupdate(${t.id})">Update</button>` + "</td></tr>";
         console.log(t.name);
     });
 }

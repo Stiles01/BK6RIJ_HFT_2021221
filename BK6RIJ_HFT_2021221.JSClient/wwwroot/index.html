@@ -2,12 +2,43 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Menu UI</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Product UI</title>
+    <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-    <a href="customer.html" target="_blank"><H1>Customer Catalog</H1></a>
-    <a href="product.html" target="_blank"><H1>Product Catalog</H1></a>
-    <a href="delivery.html" target="_blank"><H1>Delivery Catalog</H1></a>
+    <H1>Product Catalog</H1>
+
+    <div id="formdiv">
+        <label>Name</label>
+        <input type="text" id="name" />
+        <label>Price</label>
+        <input type="number" id="price" />
+        <button type="button" onclick="create()">Add Product</button>
+    </div>
+
+    <div id="updatediv">
+        <label>Name</label>
+        <input type="text" id="nametoupdate" />
+        <label>Price</label>
+        <input type="number" id="pricetoupdate" />
+        <button type="button" onclick="update()">Update Product</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
