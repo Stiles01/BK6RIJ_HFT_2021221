@@ -1,6 +1,8 @@
 ﻿let products = [];
 let connection = null;
 
+let productIdToUpdate = -1;
+
 getdata();
 setupSignalR();
 
@@ -57,6 +59,13 @@ function display() {
     });
 }
 
+function showupdate(id) {
+    document.getElementById('nametoupdate').value = products.find(t => t['id'] == id)['name'];
+    document.getElementById('pricetoupdate').value = products.find(t => t['id'] == id)['price'];
+    document.getElementById('updatediv').style.display = 'flex';
+    productIdToUpdate = id;
+}
+
 
 function remove(id) {
     fetch('http://localhost:9973/product/' + id, {
@@ -95,6 +104,29 @@ function create() {
         .catch((error) => {
             console.error('Error:', error);
         });
+}
 
+function update() {
+    document.getElementById('updatediv').style.display = 'none';
+    let name = document.getElementById('nametoupdate').value;
+    let price = document.getElementById('pricetoupdate').value;
 
+    fetch('http://localhost:9973/product', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify(
+            {
+                id: productIdToUpdate,
+                name: name,
+                price: price
+            }),
+    })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+            getdata();
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
 }
